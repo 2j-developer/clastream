@@ -8,6 +8,14 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 var fs = require('fs');
+var SlackBot = require('slackbots');
+
+// create a bot
+var bot = new SlackBot({
+    token: 'bots_token',
+    name: 'clastream'
+});
+
 
 /* --- get request(open web) --- */
 app.get('/', (req, res) => {
@@ -16,10 +24,14 @@ app.get('/', (req, res) => {
 
 /* --- get request(get comment) --- */
 io.on('connection', (socket) => {
-  socket.on('chat', (msg) => {
-    io.emit('chat', msg);
 
-      fs.appendFile('comments.list', msg + "\n")
+  /**
+   * @param {object} data
+   */
+  bot.on('message', function(data) {
+      if(typeof data.text !== 'undefined' && data.channel === 'channel_name') {
+        io.emit('chat', data.text);
+      }
   });
 });
 
