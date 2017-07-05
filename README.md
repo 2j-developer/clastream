@@ -1,2 +1,2 @@
-# class-comment-stream
+# clastream
 講義等でSlackの特定のチャンネルに来たメッセージを、ニ○ニコ風に流すアプリ
