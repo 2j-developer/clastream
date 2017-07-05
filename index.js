@@ -26,18 +26,18 @@ app.get('/', (req, res) => {
 });
 
 /* --- get request(get comment) --- */
-io.on('connection', (socket) => {
-
-  /* get slack message */
-  /**
-   * @param {object} data
-   */
-  bot.on('message', function(data) {
-      if(typeof data.text !== 'undefined' && data.channel === Config.channel_id) {
-        io.emit('chat', data.text);
-      }
-  });
+/* get slack message */
+/**
+ * @param {object} data
+ */
+bot.on('message', function(data) {
+    console.log(data);
+    if(typeof data.text !== 'undefined' && data.channel === Config.channel_id) {
+      // send to site
+      io.emit('chat', data.text);
+    }
 });
+
 
 /* --- run server --- */
 server.on('listening', () => {
