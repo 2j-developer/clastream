@@ -1,9 +1,10 @@
-function chat(){
-  var socket = io();
+﻿function chat(){
+  var msg = ".あああ";
+//  var socket = io();
   var messages = document.getElementById('messages');
 
   /* --- Get Comment ---- */
-  socket.on('chat', function (msg) {
+//  socket.on('chat', function (msg) {
     var randnum = Math.floor( Math.random() * 80 );
     var comment = document.createElement('marquee');
     var size = 500;
@@ -17,10 +18,10 @@ function chat(){
     }
 
     comment.scrollAmount = 12 + msg.length;
-    comment.loop = 1;
+//    comment.loop = 1;
     comment.style.position = "absolute";
     comment.style.top = randnum.toString() + "%";
     comment.style.fontSize = size.toString() + "%";
     messages.appendChild(comment);
-  });
+//  });
 }
