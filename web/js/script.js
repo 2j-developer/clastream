@@ -8,7 +8,11 @@
   /* --- Get Comment ---- */
 //  socket.on('chat', function (msg) {
 
-    createMarquee(msg);
+    if(msg == ":fire:"){
+      createPop(0);
+    }else{
+      createMarquee(msg);
+    }
 
 //  });
 }
@@ -23,6 +27,12 @@ function createMarquee(msg){
   //スペース減らし byたかねこ
   while(msg.indexOf("  ") != -1){
     msg = msg.replace("  "," ");
+  }
+  while(msg.indexOf("　　") != -1){
+    msg = msg.replace("　　","　");
+  }
+  while(msg.indexOf("　 ") != -1){
+    msg = msg.replace("　 "," ");
   }
 
   //色コードチェック
@@ -40,9 +50,31 @@ function createMarquee(msg){
     var param = msg.length < max ? msg.length : max ;
     comment.textContent = msg;
     comment.scrollAmount = (12+param);
-    comment.loop = 1;
+//    comment.loop = 1;
     comment.style.top = (Math.floor( Math.random() * 85 )).toString() + "%";
     comment.style.fontSize = (400-param*2).toString() + "%";
     messages.appendChild(comment);
   }
+}
+
+function createPop(num){
+  var pop = document.createElement('img');
+  var list = ["fire.png"];
+  var i = 0;
+  while(document.getElementById("pop" + i)){i++;}
+  pop.id = "pop" + i;
+  pop.src = "./icons/" + list[num];
+  if(Math.random()<0.5){
+    pop.style.top = (Math.floor( Math.random() * 50 )).toString() + "%";
+    pop.style.left = (Math.floor( Math.random() * 50 )).toString() + "%";
+  }else{
+    pop.style.bottom = (Math.floor( Math.random() * 50 )).toString() + "%";
+    pop.style.right = (Math.floor( Math.random() * 50 )).toString() + "%";
+  }
+  messages.appendChild(pop);
+  setTimeout("killPop("+ i +")",5000);
+}
+function killPop(num){
+  var popid = document.getElementById("pop"+num);
+  popid.parentNode.removeChild(popid);
 }

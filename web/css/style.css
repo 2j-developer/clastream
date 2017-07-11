@@ -5,9 +5,30 @@ body{
 #messages{
   position : absolute;
   left : 0px;
+  top : 0px;
   width : 100%;
   height : 98%;
+  overflow:hidden;
+}
+@keyframes bo {
+    0% { opacity : 0.0; }
+    4% { opacity : 1.0; }
+   50% { opacity : 1.0; }
+  100% { opacity : 0.0; }
+}
+img{
+  position : absolute;
+  z-index : 0;
+  animation-name: bo;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-fill-mode: both;
+  animation-play-state: running;
 }
 marquee{
   position : absolute;
+  z-index : 100;
 }
