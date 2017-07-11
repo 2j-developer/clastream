@@ -9,5 +9,5 @@ body{
   height : 98%;
 }
 marquee{
-  position : relative;
+  position : absolute;
 }
