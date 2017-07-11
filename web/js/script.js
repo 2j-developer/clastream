@@ -1,4 +1,5 @@
-﻿function chat(){
+﻿var list = ["fire","+1","-1","a","b"];
+function chat(){
 //マージするときはこの下の行はコメントアウト
   var msg = prompt( "" , "流すメッセージを入力" );
 
@@ -8,9 +9,15 @@
   /* --- Get Comment ---- */
 //  socket.on('chat', function (msg) {
 
-    if(msg == ":fire:"){
-      createPop(0);
-    }else{
+    var spflag = 0;
+    for(l=0;l<list.length;l++){
+      if(msg == ":"+list[l]+":"){
+        spflag = 1;
+        createPop(l);
+        break;
+      }
+    }
+    if(spflag == 0){
       createMarquee(msg);
     }
 
@@ -53,7 +60,7 @@ function createMarquee(msg){
     var param = msg.length < max ? msg.length : max ;
     comment.textContent = msg;
     comment.scrollAmount = (12+param);
-//    comment.loop = 1;
+    comment.loop = 1;
     comment.style.top = (Math.floor( Math.random() * 85 )).toString() + "%";
     comment.style.fontSize = (400-param*2).toString() + "%";
     messages.appendChild(comment);
@@ -62,11 +69,10 @@ function createMarquee(msg){
 
 function createPop(num){
   var pop = document.createElement('img');
-  var list = ["fire.png"];
   var i = 0;
   while(document.getElementById("pop" + i)){i++;}
   pop.id = "pop" + i;
-  pop.src = "./icons/" + list[num];
+  pop.src = "./icons/" + list[num] + ".png";
   if(Math.random()<0.5){
     pop.style.top = (Math.floor( Math.random() * 50 )).toString() + "%";
     pop.style.left = (Math.floor( Math.random() * 50 )).toString() + "%";
