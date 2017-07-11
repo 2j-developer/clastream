@@ -1,5 +1,4 @@
 function chat(){
-//  var msg = "‚ ‚ ‚ ";
   var socket = io();
   var messages = document.getElementById('messages');
 
@@ -7,19 +6,21 @@ function chat(){
   socket.on('chat', function (msg) {
     var randnum = Math.floor( Math.random() * 80 );
     var comment = document.createElement('marquee');
-    var size = (msg.length);
-    if(msg.charAt(0)==">"){
+    var size = 500;
+
+    if(msg.charAt(0)=="."){
       comment.textContent = msg.substring(1,msg.length);
       comment.style.color ="#cc3333";
     }else{
       comment.textContent = msg;
       comment.style.color ="#000000";
     }
-    comment.scrollamount = "10px";
+
+    comment.scrollAmount = 12 + msg.length;
     comment.loop = 1;
     comment.style.position = "absolute";
     comment.style.top = randnum.toString() + "%";
-    comment.style.fontsize = "10%";
+    comment.style.fontSize = size.toString() + "%";
     messages.appendChild(comment);
   });
 }
