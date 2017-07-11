@@ -25,14 +25,17 @@ function createMarquee(msg){
   var color = ["#ff3300","#ffff22","#33ff22","#1166ff"];
 
   //スペース減らし byたかねこ
-  while(msg.indexOf("  ") != -1){
-    msg = msg.replace("  "," ");
-  }
+  //全角全角→半角
   while(msg.indexOf("　　") != -1){
     msg = msg.replace("　　","　");
   }
+  //全角半角→半角
   while(msg.indexOf("　 ") != -1){
     msg = msg.replace("　 "," ");
+  }
+  //半角半角→半角
+  while(msg.indexOf("  ") != -1){
+    msg = msg.replace("  "," ");
   }
 
   //色コードチェック
