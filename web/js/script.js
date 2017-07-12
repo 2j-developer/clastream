@@ -1,5 +1,4 @@
-﻿var list = ["fire","+1","-1","a","b"];
-function chat(){
+﻿function chat(){
 
   var socket = io();
   var messages = document.getElementById('messages');
@@ -7,17 +6,8 @@ function chat(){
   /* --- Get Comment ---- */
   socket.on('chat', function (msg) {
 
-    var spflag = 0;
-    for(l=0;l<list.length;l++){
-      if(msg == ":"+list[l]+":" || msg == ":"+list[l]+": "){
-        spflag = 1;
-        createPop(l);
-        break;
-      }
-    }
-    if(spflag == 0){
-      createMarquee(msg);
-    }
+    msg = popcheck(msg);
+    createMarquee(msg);
 
   });
 }
@@ -25,9 +15,6 @@ function chat(){
 function createMarquee(msg){
   //タグ作る
   var comment = document.createElement('marquee');
-  var max = 60;
-  var ccode = ["r","g","b","c","m","y","w"];
-  var color = ["#ff0000","#00ff00","#0000ff","#00ffff","#ff00ff","#ffff00","#ffffff"];
 
   //スペース減らし byたかねこ
   //全角全角→半角
@@ -55,37 +42,20 @@ function createMarquee(msg){
 
   //色コードを引いた残りの文字数をチェック
   if(msg.length>0){
-    var param = msg.length < max ? msg.length : max ;
+    //スクロールスピード
+    var speed = 18+Math.sqrt(msg.length)*8;
+    //文字サイズ(文字数によってサイズがマイナスにならないように)
+    var size = 400 - (msg.length < max ? msg.length : max) * 2;
     comment.textContent = msg;
-    comment.scrollAmount = (12+param);
+    comment.scrollAmount = speed;
     comment.loop = 1;
     if(Math.random()<0.5){
       comment.style.top = (Math.floor( Math.random() * 50 )).toString() + "%";
     }else{
       comment.style.bottom = (Math.floor( Math.random() * 50 )).toString() + "%";
     }
-    comment.style.fontSize = (400-param*2).toString() + "%";
+    comment.style.fontSize = size.toString() + "%";
     messages.appendChild(comment);
   }
 }
 
-function createPop(num){
-  var pop = document.createElement('img');
-  var i = 0;
-  while(document.getElementById("pop" + i)){i++;}
-  pop.id = "pop" + i;
-  pop.src = "./icons/" + list[num] + ".png";
-  if(Math.random()<0.5){
-    pop.style.top = (Math.floor( Math.random() * 50 )).toString() + "%";
-    pop.style.left = (Math.floor( Math.random() * 50 )).toString() + "%";
-  }else{
-    pop.style.bottom = (Math.floor( Math.random() * 50 )).toString() + "%";
-    pop.style.right = (Math.floor( Math.random() * 50 )).toString() + "%";
-  }
-  messages.appendChild(pop);
-  setTimeout("killPop("+ i +")",5000);
-}
-function killPop(num){
-  var popid = document.getElementById("pop"+num);
-  popid.parentNode.removeChild(popid);
-}
