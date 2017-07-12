@@ -46,7 +46,7 @@ function createMarquee(msg){
   //色コードを引いた残りの文字数をチェック
   if(msg.length>0){
     //スクロールスピード
-    var speed = 12+msg.length;
+    var speed = 18+Math.sqrt(msg.length)*8;
     //文字サイズ(文字数によってサイズがマイナスにならないように)
     var size = 400 - (msg.length < max ? msg.length : max) * 2;
     comment.textContent = msg;
