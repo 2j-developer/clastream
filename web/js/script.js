@@ -1,13 +1,11 @@
 ﻿var list = ["fire","+1","-1","a","b"];
 function chat(){
-//マージするときはこの下の行はコメントアウト
-  var msg = prompt( "" , "流すメッセージを入力" );
 
-//  var socket = io();
+  var socket = io();
   var messages = document.getElementById('messages');
 
   /* --- Get Comment ---- */
-//  socket.on('chat', function (msg) {
+  socket.on('chat', function (msg) {
 
     var spflag = 0;
     for(l=0;l<list.length;l++){
@@ -21,7 +19,7 @@ function chat(){
       createMarquee(msg);
     }
 
-//  });
+  });
 }
 
 function createMarquee(msg){
