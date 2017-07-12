@@ -28,8 +28,8 @@ function createMarquee(msg){
   //タグ作る
   var comment = document.createElement('marquee');
   var max = 60;
-  var ccode = ["r","y","g","b"];
-  var color = ["#ff3300","#ffff22","#33ff22","#1166ff"];
+  var ccode = ["r","g","b","c","m","y"];
+  var color = ["#ff0000","#00ff00","#0000ff","#00ffff","#ff00ff","#fffff00"];
 
   //スペース減らし byたかねこ
   //全角全角→半角
@@ -61,7 +61,11 @@ function createMarquee(msg){
     comment.textContent = msg;
     comment.scrollAmount = (12+param);
     comment.loop = 1;
-    comment.style.top = (Math.floor( Math.random() * 85 )).toString() + "%";
+    if(Math.random()<0.5){
+      comment.style.top = (Math.floor( Math.random() * 50 )).toString() + "%";
+    }else{
+      comment.style.bottom = (Math.floor( Math.random() * 50 )).toString() + "%";
+    }
     comment.style.fontSize = (400-param*2).toString() + "%";
     messages.appendChild(comment);
   }
