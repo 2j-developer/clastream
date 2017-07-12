@@ -11,7 +11,7 @@ function chat(){
 
     var spflag = 0;
     for(l=0;l<list.length;l++){
-      if(msg == ":"+list[l]+":"){
+      if(msg == ":"+list[l]+":" || msg == ":"+list[l]+": "){
         spflag = 1;
         createPop(l);
         break;
