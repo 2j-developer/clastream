@@ -9,7 +9,7 @@ function chat(){
 
     var spflag = 0;
     for(l=0;l<list.length;l++){
-      if(msg == ":"+list[l]+":"){
+      if(msg == ":"+list[l]+":" || msg == ":"+list[l]+": "){
         spflag = 1;
         createPop(l);
         break;
@@ -26,8 +26,8 @@ function createMarquee(msg){
   //タグ作る
   var comment = document.createElement('marquee');
   var max = 60;
-  var ccode = ["r","g","b","c","m","y"];
-  var color = ["#ff0000","#00ff00","#0000ff","#00ffff","#ff00ff","#fffff00"];
+  var ccode = ["r","g","b","c","m","y","w"];
+  var color = ["#ff0000","#00ff00","#0000ff","#00ffff","#ff00ff","#ffff00","#ffffff"];
 
   //スペース減らし byたかねこ
   //全角全角→半角
