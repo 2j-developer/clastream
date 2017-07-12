@@ -8,17 +8,9 @@
   /* --- Get Comment ---- */
 //  socket.on('chat', function (msg) {
 
-    var spflag = 0;
-    for(l=0;l<list.length;l++){
-      if(msg == ":"+list[l].toLowerCase()+":" || msg == ":"+list[l].toLowerCase()+": " || msg == ":"+list[l].toUpperCase()+":" || msg == ":"+list[l].toUpperCase()+": "){
-        spflag = 1;
-        createPop(l);
-        break;
-      }
-    }
-    if(spflag == 0){
-      createMarquee(msg);
-    }
+    msg = popcheck(msg);
+    alert(""+msg);
+    createMarquee(msg);
 
 //  });
 }
