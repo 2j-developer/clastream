@@ -46,3 +46,4 @@ server.on('listening', () => {
 server.listen(8000);
 
 app.use('/js', express.static(__dirname + '/web/js'));
+app.use('/css', express.static(__dirname + '/web/css'));
