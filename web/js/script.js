@@ -12,7 +12,9 @@
     for(l=0;l<list.length;l++){
       if(msg == ":"+list[l]+":" || msg == ":"+list[l]+": "){
         spflag = 1;
-        createPop(l);
+        for(t=0;t<(l<takusan?5:1);t++){
+          createPop(l);
+        }
         break;
       }
     }
@@ -26,9 +28,6 @@
 function createMarquee(msg){
   //タグ作る
   var comment = document.createElement('marquee');
-  var max = 60;
-  var ccode = ["r","g","b","c","m","y","w"];
-  var color = ["#ff0000","#00ff00","#0000ff","#00ffff","#ff00ff","#ffff00","#ffffff"];
 
   //スペース減らし byたかねこ
   //全角全角→半角
@@ -56,16 +55,19 @@ function createMarquee(msg){
 
   //色コードを引いた残りの文字数をチェック
   if(msg.length>0){
-    var param = msg.length < max ? msg.length : max ;
+    //スクロールスピード
+    var speed = 12+msg.length;
+    //文字サイズ(文字数によってサイズがマイナスにならないように)
+    var size = 400 - (msg.length < max ? msg.length : max) * 2;
     comment.textContent = msg;
-    comment.scrollAmount = (12+param);
+    comment.scrollAmount = speed;
     comment.loop = 1;
     if(Math.random()<0.5){
       comment.style.top = (Math.floor( Math.random() * 50 )).toString() + "%";
     }else{
       comment.style.bottom = (Math.floor( Math.random() * 50 )).toString() + "%";
     }
-    comment.style.fontSize = (400-param*2).toString() + "%";
+    comment.style.fontSize = size.toString() + "%";
     messages.appendChild(comment);
   }
 }
