@@ -10,11 +10,9 @@
 
     var spflag = 0;
     for(l=0;l<list.length;l++){
-      if(msg == ":"+list[l]+":" || msg == ":"+list[l]+": "){
+      if(msg == ":"+list[l].toLowerCase()+":" || msg == ":"+list[l].toLowerCase()+": " || msg == ":"+list[l].toUpperCase()+":" || msg == ":"+list[l].toUpperCase()+": "){
         spflag = 1;
-        for(t=0;t<(l<takusan?5:1);t++){
-          createPop(l);
-        }
+        createPop(l);
         break;
       }
     }
