@@ -9,7 +9,7 @@
 //  socket.on('chat', function (msg) {
 
     msg = popcheck(msg);
-    alert(""+msg);
+//    alert(""+msg);
     createMarquee(msg);
 
 //  });
