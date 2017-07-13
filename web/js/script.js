@@ -1,18 +1,13 @@
 ﻿function chat(){
-//マージするときはこの下の行はコメントアウト
-  var msg = prompt( "" , "流すメッセージを入力" );
-
-//  var socket = io();
+  var socket = io();
   var messages = document.getElementById('messages');
 
   /* --- Get Comment ---- */
-//  socket.on('chat', function (msg) {
+  socket.on('chat', function (msg) {
 
-    msg = popcheck(msg);
-//    alert(""+msg);
-    createMarquee(msg);
+    mesxst(msg);
 
-//  });
+  });
 }
 
 function createMarquee(msg){
@@ -61,4 +56,7 @@ function createMarquee(msg){
     messages.appendChild(comment);
   }
 }
-
+function mesxst(msg){
+  msg = popcheck(msg);
+  createMarquee(msg);
+}
