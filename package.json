@@ -1,0 +1,20 @@
+{
+  "name": "clastream",
+  "version": "1.0.0",
+  "description": "講義等でSlackの特定のチャンネルに来たメッセージを、ニ○ニコ風に流すアプリ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akakou/clastream.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akakou/clastream/issues"
+  },
+  "homepage": "https://github.com/akakou/clastream#readme"
+}
