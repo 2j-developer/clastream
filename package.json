@@ -16,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/akakou/clastream/issues"
   },
-  "homepage": "https://github.com/akakou/clastream#readme"
+  "homepage": "https://github.com/akakou/clastream#readme",
+  "dependencies": {
+    "express": "^4.15.3",
+    "http": "0.0.0",
+    "slackbots": "^1.0.2",
+    "socket.io": "^2.0.3"
+  }
 }
